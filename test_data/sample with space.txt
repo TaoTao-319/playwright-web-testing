@@ -1,0 +1,2 @@
+Playwright file selection practice.
+This sample has spaces in its filename.

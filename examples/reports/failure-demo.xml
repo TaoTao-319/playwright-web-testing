@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="7.278" timestamp="2026-10-15T15:40:58.260262+08:00" hostname="TaoTao"><testcase classname="failure_lab.test_diagnostics" name="test_product_title_diagnostics[chromium]" time="7.079"><properties><property name="playwright_screenshot" value="test-results\failure-demo\failure-lab-test-diagnostics-py-test-product-title-diagnostics-chromium\test-failed-1.png" /><property name="playwright_trace" value="test-results\failure-demo\failure-lab-test-diagnostics-py-test-product-title-diagnostics-chromium\trace.zip" /></properties><failure message="AssertionError: Locator expected to have text 'Wrong Products Title'&#10;Actual value: Products &#10;Call log:&#10;  - Expect &quot;to_have_text&quot; locator(&quot;[data-test=\&quot;title\&quot;]&quot;) with timeout 5000ms&#10;  - waiting for locator(&quot;[data-test=\&quot;title\&quot;]&quot;)&#10;    14 × locator resolved to &lt;span class=&quot;title&quot; data-test=&quot;title&quot;&gt;Products&lt;/span&gt;&#10;       - unexpected value &quot;Products&quot;&#10;&#10;Aria snapshot:&#10;- text: Products">failure_lab\test_diagnostics.py:6: in test_product_title_diagnostics
+    expect(inventory_page.title).to_have_text(expected)
+E   AssertionError: Locator expected to have text 'Wrong Products Title'
+E   Actual value: Products 
+E   Call log:
+E     - Expect "to_have_text" locator("[data-test=\"title\"]") with timeout 5000ms
+E     - waiting for locator("[data-test=\"title\"]")
+E       14 × locator resolved to &lt;span class="title" data-test="title"&gt;Products&lt;/span&gt;
+E          - unexpected value "Products"
+E   
+E   Aria snapshot:
+E   - text: Products</failure></testcase></testsuite></testsuites>

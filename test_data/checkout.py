@@ -1,0 +1,3 @@
+FIRST_NAME = "Test"
+LAST_NAME = "Learner"
+POSTAL_CODE = "100000"

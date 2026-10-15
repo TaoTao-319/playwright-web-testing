@@ -1,0 +1,23 @@
+﻿场景,前置条件,具体操作,预期结果,脚本,执行结果
+正常登录 test_login_success[chromium],未登录,填写正确演示账号密码并登录,进入商品页并显示 Products 和商品,tests/test_login.py::test_login_success[chromium],passed
+登录输入校验 test_login_rejected[chromium-wrong-password],未登录,输入 standard_user 和 wrong_password，点击登录,显示账号或密码不匹配，停留登录页,tests/test_login.py::test_login_rejected[chromium-wrong-password],passed
+登录输入校验 test_login_rejected[chromium-locked-account],未登录,输入 locked_out_user 和 secret_sauce，点击登录,显示账号已锁定，停留登录页,tests/test_login.py::test_login_rejected[chromium-locked-account],passed
+登录输入校验 test_login_rejected[chromium-empty-username],未登录,用户名留空，输入 secret_sauce，点击登录,显示 Username is required，停留登录页,tests/test_login.py::test_login_rejected[chromium-empty-username],passed
+登录输入校验 test_login_rejected[chromium-empty-password],未登录,输入 standard_user，密码留空，点击登录,显示 Password is required，停留登录页,tests/test_login.py::test_login_rejected[chromium-empty-password],passed
+纠正错误密码 test_login_retry_after_wrong_password[chromium],未登录,错误密码登录后不刷新，改用正确密码,进入商品页，错误提示消失,tests/test_login.py::test_login_retry_after_wrong_password[chromium],passed
+商品信息 test_inventory_product_information[chromium],独立登录,读取商品数量和背包、车灯价格,共 6 件；价格 29.99、9.99,tests/test_inventory.py::test_inventory_product_information[chromium],passed
+价格升序 test_sort_price_low_to_high[chromium],独立登录,选择价格从低到高并读取全部价格,共 6 件，数字价格升序,tests/test_inventory.py::test_sort_price_low_to_high[chromium],passed
+价格降序 test_sort_price_high_to_low[chromium],独立登录,选择价格从高到低并读取全部价格,共 6 件，数字价格降序,tests/test_inventory.py::test_sort_price_high_to_low[chromium],passed
+名称排序 test_sort_name_descending_and_restore[chromium],独立登录,先选择 Z 到 A，再选择 A 到 Z,商品名称先降序后升序,tests/test_inventory.py::test_sort_name_descending_and_restore[chromium],passed
+单件加购 test_add_one_product[chromium],独立登录，空购物车,添加背包并打开购物车,数量为 1，名称、价格和数量正确,tests/test_cart.py::test_add_one_product[chromium],passed
+多件加购 test_add_two_products[chromium],独立登录，空购物车,添加背包与车灯，打开购物车,数量为 2，商品名称与价格正确,tests/test_cart.py::test_add_two_products[chromium],passed
+购物车保留 test_cart_keeps_products_after_returning_to_inventory[chromium],独立登录,添加两件商品，进购物车，再返回商品页并重新进入,商品和数量保持不变,tests/test_cart.py::test_cart_keeps_products_after_returning_to_inventory[chromium],passed
+移除一件 test_remove_one_keeps_other[chromium],独立登录，自行添加两件商品,移除背包并返回商品页,车灯保留，徽标为 1，背包可重新添加,tests/test_cart.py::test_remove_one_keeps_other[chromium],passed
+移除再添加 test_readd_product_after_removing[chromium],独立登录，自行添加两件商品,移除背包，返回商品页并重新添加,恢复两件商品，每件数量 1,tests/test_cart.py::test_readd_product_after_removing[chromium],passed
+清空购物车 test_remove_all_products[chromium],独立登录，自行添加背包,从购物车移除背包,商品为空，数量徽标消失,tests/test_cart.py::test_remove_all_products[chromium],passed
+退出登录 test_logout_returns_to_login[chromium],独立登录,菜单中点击退出,返回登录页，输入框与按钮可见,tests/test_cart.py::test_logout_returns_to_login[chromium],passed
+订单预览与取消 test_checkout_subtotal[chromium],独立登录，自行添加背包和车灯,提交完整结算信息，核对预览后取消,商品正确，小计 39.98，取消后返回商品页,tests/test_checkout.py::test_checkout_subtotal[chromium],passed
+结算必填校验 test_checkout_required_fields[chromium-missing-first-name],独立登录，自行添加背包并进入结算,名字留空，姓氏填 Learner，邮编填 100000，点击继续,显示 First Name is required，停留结算信息页,tests/test_checkout.py::test_checkout_required_fields[chromium-missing-first-name],passed
+结算必填校验 test_checkout_required_fields[chromium-missing-last-name],独立登录，自行添加背包并进入结算,名字填 Test，姓氏留空，邮编填 100000，点击继续,显示 Last Name is required，停留结算信息页,tests/test_checkout.py::test_checkout_required_fields[chromium-missing-last-name],passed
+结算必填校验 test_checkout_required_fields[chromium-missing-postal-code],独立登录，自行添加背包并进入结算,名字填 Test，姓氏填 Learner，邮编留空，点击继续,显示 Postal Code is required，停留结算信息页,tests/test_checkout.py::test_checkout_required_fields[chromium-missing-postal-code],passed
+完整购买 test_complete_purchase[chromium],独立登录，自行添加背包和车灯,填写结算信息，核对预览，完成订单，返回购物车,商品和小计正确，出现完成提示，购物车清空,tests/test_checkout.py::test_complete_purchase[chromium],passed

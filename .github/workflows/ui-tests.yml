@@ -1,0 +1,49 @@
+name: Sauce Demo UI Tests
+on:
+  push: null
+  pull_request: null
+  workflow_dispatch:
+    inputs:
+      demonstrate_failure:
+        description: 故意触发断言失败，演示如何下载失败证据
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  ui-tests:
+    name: Chromium UI tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: 3.14.4
+          cache: pip
+          cache-dependency-path: requirements.txt
+      - name: Install Python dependencies
+        run: |-
+          python -m pip install -r requirements.txt
+          python -m pip check
+      - name: Install Chromium and Linux dependencies
+        run: python -m playwright install --with-deps chromium
+      - name: Check validation helpers
+        run: python -m pytest checks -o addopts='' -q
+      - name: Run UI tests and verify diagnostics
+        run: python scripts/validate_project.py --report-dir reports/ci --artifact-dir test-results/ci --evidence-dir reports/ci/evidence
+      - name: Demonstrate a failed pipeline
+        if: github.event_name == 'workflow_dispatch' && inputs.demonstrate_failure
+        run: python -m pytest failure_lab/test_diagnostics.py --failure-demo --output=test-results/ci/pipeline-failure --html=reports/ci/pipeline-failure.html --junitxml=reports/ci/pipeline-failure.xml
+      - name: Upload reports and failure evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: ui-test-results-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            reports/ci/
+            test-results/ci/
+          if-no-files-found: warn
+          retention-days: 14

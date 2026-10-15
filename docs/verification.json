@@ -1,0 +1,217 @@
+{
+  "checked_at": "2026-10-15T07:45:46.453148+00:00",
+  "business": {
+    "total": 22,
+    "passed": 22,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "controls": {
+    "total": 15,
+    "passed": 15,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "validation_checks": {
+    "passed": 7,
+    "failed": 0
+  },
+  "diagnostics": {
+    "results": {
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 22,
+      "duration_seconds": 54.134,
+      "report": "reports/report.html",
+      "cases": [
+        {
+          "name": "test_login_success[chromium]",
+          "module": "tests.test_login",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_login_rejected[chromium-wrong-password]",
+          "module": "tests.test_login",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_login_rejected[chromium-locked-account]",
+          "module": "tests.test_login",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_login_rejected[chromium-empty-username]",
+          "module": "tests.test_login",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_login_rejected[chromium-empty-password]",
+          "module": "tests.test_login",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_login_retry_after_wrong_password[chromium]",
+          "module": "tests.test_login",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_inventory_product_information[chromium]",
+          "module": "tests.test_inventory",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_sort_price_low_to_high[chromium]",
+          "module": "tests.test_inventory",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_sort_price_high_to_low[chromium]",
+          "module": "tests.test_inventory",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_sort_name_descending_and_restore[chromium]",
+          "module": "tests.test_inventory",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_add_one_product[chromium]",
+          "module": "tests.test_cart",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_add_two_products[chromium]",
+          "module": "tests.test_cart",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_cart_keeps_products_after_returning_to_inventory[chromium]",
+          "module": "tests.test_cart",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_remove_one_keeps_other[chromium]",
+          "module": "tests.test_cart",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_readd_product_after_removing[chromium]",
+          "module": "tests.test_cart",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_remove_all_products[chromium]",
+          "module": "tests.test_cart",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_logout_returns_to_login[chromium]",
+          "module": "tests.test_cart",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_checkout_subtotal[chromium]",
+          "module": "tests.test_checkout",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_checkout_required_fields[chromium-missing-first-name]",
+          "module": "tests.test_checkout",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_checkout_required_fields[chromium-missing-last-name]",
+          "module": "tests.test_checkout",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_checkout_required_fields[chromium-missing-postal-code]",
+          "module": "tests.test_checkout",
+          "message": "",
+          "status": "passed"
+        },
+        {
+          "name": "test_complete_purchase[chromium]",
+          "module": "tests.test_checkout",
+          "message": "",
+          "status": "passed"
+        }
+      ]
+    },
+    "failure-demo": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 0,
+      "duration_seconds": 7.278,
+      "report": "reports/failure-demo.html",
+      "cases": [
+        {
+          "name": "test_product_title_diagnostics[chromium]",
+          "module": "failure_lab.test_diagnostics",
+          "message": "failure_lab\\test_diagnostics.py:6: in test_product_title_diagnostics\n    expect(inventory_page.title).to_have_text(expected)\nE   AssertionError: Locator expected to have text 'Wrong Products Title'\nE   Actual value: Products \nE   Call log:\nE     - Expect \"to_have_text\" locator(\"[data-test=\\\"title\\\"]\") with timeout 5000ms\nE     - waiting for locator(\"[data-test=\\\"title\\\"]\")\nE       14 × locator resolved to <span class=\"title\" data-test=\"title\">Products</span>\nE          - unexpected value \"Products\"\nE   \nE   Aria snapshot:\nE   - text: Products AssertionError: Locator expected to have text 'Wrong Products Title'\nActual value: Products \nCall log:\n  - Expect \"to_have_text\" locator(\"[data-test=\\\"title\\\"]\") with timeout 5000ms\n  - waiting for locator(\"[data-test=\\\"title\\\"]\")\n    14 × locator resolved to <span class=\"title\" data-test=\"title\">Products</span>\n       - unexpected value \"Products\"\n\nAria snapshot:\n- text: Products",
+          "status": "failed"
+        }
+      ]
+    },
+    "recovered": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 1,
+      "duration_seconds": 2.354,
+      "report": "reports/recovered.html",
+      "cases": [
+        {
+          "name": "test_product_title_diagnostics[chromium]",
+          "module": "failure_lab.test_diagnostics",
+          "message": "",
+          "status": "passed"
+        }
+      ]
+    },
+    "independent": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 1,
+      "duration_seconds": 2.554,
+      "report": "reports/independent.html",
+      "cases": [
+        {
+          "name": "test_complete_purchase[chromium]",
+          "module": "tests.test_checkout",
+          "message": "",
+          "status": "passed"
+        }
+      ]
+    }
+  }
+}
